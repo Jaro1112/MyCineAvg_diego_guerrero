@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api_AgregarPelicula import urls as pelicula_urls
+from api_AgregarSerie import urls as serie_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/peliculas/',include(pelicula_urls))
+    path('api/peliculas/',include(pelicula_urls)),
+    path('api/serie/',include(serie_urls))
 ]
