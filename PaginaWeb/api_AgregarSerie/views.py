@@ -36,6 +36,10 @@ class serie_api_view(APIView):
             return Response(serializador.data, status=status.HTTP_200_OK)
         return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def put(selft,request,pk):
+        serie_consultada=serie.objects.filter(pk=pk).delete()
+        return Response(serie_consultada.data,status=status.HTTP_200_OK)
+    
 class serie_detail_api_view(APIView):
     def get(self, request, pk, *args, **kwargs):
         serie_obj = get_object_or_404(serie, pk=pk)
