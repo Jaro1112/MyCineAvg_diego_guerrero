@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from api_AgregarSerie.models import serie
 from api_AgregarSerie.serializer import serie_serializer
 from rest_framework import status, permissions
-import json
 
 class serie_api_view(APIView):
     def post(self, request, *args, **kwargs):
@@ -15,11 +14,11 @@ class serie_api_view(APIView):
             'fechaEstreno' : request.data.get('fechaEstreno'),
             'pais' : request.data.get('pais')
         }
-        serializador = serie_serializer(data = data)
+        serializador = serie_serializer(data=data)
         if serializador.is_valid():
             serializador.save()
-            return Response(serializador.data, status = status.HTTP_200_OK)
-        return Response(serializador.data, status = status.HTTP_400_BAD_REQUEST)
+            return Response(serializador.data, status=status.HTTP_200_OK)
+        return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request, pk, *args, **kwargs):
         serie_obj = serie.objects.get(pk=pk)
@@ -36,10 +35,10 @@ class serie_api_view(APIView):
             return Response(serializador.data, status=status.HTTP_200_OK)
         return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def put(selft,request,pk):
-        serie_consultada=serie.objects.filter(pk=pk).delete()
-        return Response(serie_consultada.data,status=status.HTTP_200_OK)
-    
+    def delete(self, request, pk, *args, **kwargs):
+        serie_consultada = serie.objects.filter(pk=pk).delete()
+        return Response(serie_consultada, status=status.HTTP_200_OK)
+
 class serie_detail_api_view(APIView):
     def get(self, request, pk, *args, **kwargs):
         serie_obj = get_object_or_404(serie, pk=pk)
