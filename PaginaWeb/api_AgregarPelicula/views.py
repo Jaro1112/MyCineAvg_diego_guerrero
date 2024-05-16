@@ -36,6 +36,10 @@ class pelicula_api_view(APIView):
             return Response(serializador.data, status=status.HTTP_200_OK)
         return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    def put(selft,request,pk):
+        pelicula_consultada=pelicula.objects.filter(pk=pk).delete()
+        return Response(pelicula_consultada.data,status=status.HTTP_200_OK)
+    
 class pelicula_detail_api_view(APIView):
     def get(self, request, pk, *args, **kwargs):
         pelicula_obj = get_object_or_404(pelicula, pk=pk)

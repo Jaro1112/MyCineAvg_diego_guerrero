@@ -1,4 +1,3 @@
-
 from api_AgregarPelicula.models import pelicula
 from rest_framework import serializers
 

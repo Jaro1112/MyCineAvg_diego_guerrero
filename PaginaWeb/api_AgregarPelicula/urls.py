@@ -5,4 +5,5 @@ urlpatterns=[
     path('crear-pelicula',pelicula_api_view.as_view()),
     path('editar-pelicula/<int:pk>', pelicula_api_view.as_view()),
     path('pelicula/<int:pk>/', pelicula_detail_api_view.as_view()),
+    path('elliminar-pelicula/<int:pk>/', pelicula_api_view.as_view()),
 ]
