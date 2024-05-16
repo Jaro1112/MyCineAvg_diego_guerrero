@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-k^8^6r0^n5&g&)ot83x+aisc)mz7b2-twj1uu7j96x4!##w)nj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'PaginaWeb.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
