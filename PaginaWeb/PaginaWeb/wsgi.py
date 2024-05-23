@@ -17,4 +17,5 @@ sys.path.append('/opt/render/MyCineAvg_diego_guerrero/PaginaWeb')
 sys.path.append('/opt/render/MyCineAvg_diego_guerrero/PaginaWeb/PaginaWeb')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PaginaWeb.settings')
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
