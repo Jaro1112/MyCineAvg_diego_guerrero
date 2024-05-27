@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -39,6 +39,11 @@ class pelicula_api_view(APIView):
         pelicula_consultada = get_object_or_404(pelicula, pk=pk)
         pelicula_consultada.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def get(self, request, *args, **kwargs):
+        peliculas = pelicula.objects.all()
+        serializador = pelicula_serializer(peliculas, many=True)
+        return Response(serializador.data, status=status.HTTP_200_OK)
 
 class pelicula_detail_api_view(APIView):
     def get(self, request, pk, *args, **kwargs):
