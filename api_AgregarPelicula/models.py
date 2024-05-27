@@ -8,5 +8,3 @@ class pelicula(models.Model):
     pais = models.CharField(max_length=12)
 
 
-
-
