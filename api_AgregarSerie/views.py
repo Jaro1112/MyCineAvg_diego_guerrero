@@ -8,11 +8,11 @@ from rest_framework import status, permissions
 class serie_api_view(APIView):
     def post(self, request, *args, **kwargs):
         data = {
-            'nombreSerie' : request.data.get('nombreSerie'),
-            'duracion' : request.data.get('duracion'),
-            'genero' : request.data.get('genero'),
-            'fechaEstreno' : request.data.get('fechaEstreno'),
-            'pais' : request.data.get('pais')
+            'nombreSerie': request.data.get('nombreSerie'),
+            'duracion': request.data.get('duracion'),
+            'genero': request.data.get('genero'),
+            'fechaEstreno': request.data.get('fechaEstreno'),
+            'pais': request.data.get('pais')
         }
         serializador = serie_serializer(data=data)
         if serializador.is_valid():
@@ -21,7 +21,7 @@ class serie_api_view(APIView):
         return Response(serializador.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def put(self, request, pk, *args, **kwargs):
-        serie_obj = serie.objects.get(pk=pk)
+        serie_obj = get_object_or_404(serie, pk=pk)
         data = {
             'nombreSerie': request.data.get('nombreSerie', serie_obj.nombreSerie),
             'duracion': request.data.get('duracion', serie_obj.duracion),
@@ -38,6 +38,11 @@ class serie_api_view(APIView):
     def delete(self, request, pk, *args, **kwargs):
         serie_consultada = serie.objects.filter(pk=pk).delete()
         return Response(serie_consultada, status=status.HTTP_200_OK)
+    
+    def get(self, request, *args, **kwargs):
+        series = serie.objects.all()
+        serializador = serie_serializer(series, many=True)
+        return Response(serializador.data, status=status.HTTP_200_OK)
 
 class serie_detail_api_view(APIView):
     def get(self, request, pk, *args, **kwargs):
