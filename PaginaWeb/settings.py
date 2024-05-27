@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200"
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api_AgregarPelicula',
-    'api_AgregarSerie'
+    'api_AgregarSerie',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
