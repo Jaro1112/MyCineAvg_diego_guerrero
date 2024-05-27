@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'api_AgregarPelicula',
     'api_AgregarSerie',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
