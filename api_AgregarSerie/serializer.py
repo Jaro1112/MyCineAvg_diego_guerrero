@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 class serie_serializer(serializers.ModelSerializer):
     class Meta:
-        model = serie 
-        fields = ['id','nombreSerie','duracion','genero','fechaEstreno','pais']
-        
+        model = serie
+        fields = ['id', 'nombreSerie', 'duracion', 'genero', 'fechaEstreno', 'pais', 'imagen']
         

@@ -12,7 +12,8 @@ class serie_api_view(APIView):
             'duracion': request.data.get('duracion'),
             'genero': request.data.get('genero'),
             'fechaEstreno': request.data.get('fechaEstreno'),
-            'pais': request.data.get('pais')
+            'pais': request.data.get('pais'),
+            'imagen': request.FILES.get('imagen')
         }
         serializador = serie_serializer(data=data)
         if serializador.is_valid():
@@ -27,7 +28,8 @@ class serie_api_view(APIView):
             'duracion': request.data.get('duracion', serie_obj.duracion),
             'genero': request.data.get('genero', serie_obj.genero),
             'fechaEstreno': request.data.get('fechaEstreno', serie_obj.fechaEstreno),
-            'pais': request.data.get('pais', serie_obj.pais)
+            'pais': request.data.get('pais', serie_obj.pais),
+            'imagen': request.FILES.get('imagen', serie_obj.imagen)
         }
         serializador = serie_serializer(serie_obj, data=data, partial=True)
         if serializador.is_valid():
@@ -37,7 +39,7 @@ class serie_api_view(APIView):
     
     def delete(self, request, pk, *args, **kwargs):
         serie_consultada = serie.objects.filter(pk=pk).delete()
-        return Response(serie_consultada, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
     def get(self, request, *args, **kwargs):
         series = serie.objects.all()
