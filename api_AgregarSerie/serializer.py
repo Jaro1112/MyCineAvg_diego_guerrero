@@ -4,5 +4,5 @@ from rest_framework import serializers
 class serie_serializer(serializers.ModelSerializer):
     class Meta:
         model = serie
-        fields = ['id', 'nombreSerie', 'duracion', 'genero', 'fechaEstreno', 'pais', 'imagen']
+        fields = ['id', 'nombreSerie', 'duracion', 'genero', 'fechaEstreno', 'pais', 'imagen_url']
         

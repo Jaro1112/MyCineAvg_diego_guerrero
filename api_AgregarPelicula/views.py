@@ -13,7 +13,7 @@ class pelicula_api_view(APIView):
             'genero': request.data.get('genero'),
             'fechaEstreno': request.data.get('fechaEstreno'),
             'pais': request.data.get('pais'),
-            'imagen': request.FILES.get('imagen')
+            'imagen_url': request.data.get('imagen_url')
         }
         serializador = pelicula_serializer(data=data)
         if serializador.is_valid():
@@ -29,8 +29,8 @@ class pelicula_api_view(APIView):
             'genero': request.data.get('genero', pelicula_obj.genero),
             'fechaEstreno': request.data.get('fechaEstreno', pelicula_obj.fechaEstreno),
             'pais': request.data.get('pais', pelicula_obj.pais),
-            'imagen': request.FILES.get('imagen', pelicula_obj.imagen)
-        }
+            'imagen_url': request.data.get('imagen_url', pelicula_obj.imagen_url)
+            }
         serializador = pelicula_serializer(pelicula_obj, data=data, partial=True)
         if serializador.is_valid():
             serializador.save()

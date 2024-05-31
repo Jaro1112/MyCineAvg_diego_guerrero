@@ -6,4 +6,4 @@ class pelicula_serializer(serializers.ModelSerializer):
     duracion = serializers.CharField(max_length=30)  
     class Meta:
         model = pelicula
-        fields = ['id', 'nombrePelicula', 'duracion', 'genero', 'fechaEstreno', 'pais', 'imagen']
+        fields = ['id', 'nombrePelicula', 'duracion', 'genero', 'fechaEstreno', 'pais', 'imagen_url']
