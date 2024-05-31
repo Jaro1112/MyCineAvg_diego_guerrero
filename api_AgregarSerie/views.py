@@ -13,7 +13,7 @@ class serie_api_view(APIView):
             'genero': request.data.get('genero'),
             'fechaEstreno': request.data.get('fechaEstreno'),
             'pais': request.data.get('pais'),
-            'imagen_url': request.data.get('imagen_url')
+            'img': request.data.get('img')
         }
         serializador = serie_serializer(data=data)
         if serializador.is_valid():
@@ -29,7 +29,7 @@ class serie_api_view(APIView):
             'genero': request.data.get('genero', serie_obj.genero),
             'fechaEstreno': request.data.get('fechaEstreno', serie_obj.fechaEstreno),
             'pais': request.data.get('pais', serie_obj.pais),
-            'imagen_url': request.data.get('imagen_url', serie_obj.imagen_url)
+            'img': request.data.get('img', serie_obj.img)
         }
         serializador = serie_serializer(serie_obj, data=data, partial=True)
         if serializador.is_valid():

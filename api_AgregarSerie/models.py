@@ -6,4 +6,4 @@ class serie(models.Model):
     genero = models.CharField(max_length=20)
     fechaEstreno = models.CharField(max_length=20)
     pais = models.CharField(max_length=12)
-    imagen_url = models.URLField(max_length=200, null=True, blank=True)
+    img = models.CharField(max_length=255, null=True, blank=True)
