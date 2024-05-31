@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from api_AgregarPelicula.models import pelicula
 from api_AgregarPelicula.serializer import pelicula_serializer
-from rest_framework import status, permissions
 
 class pelicula_api_view(APIView):
     def post(self, request, *args, **kwargs):
@@ -30,7 +30,7 @@ class pelicula_api_view(APIView):
             'fechaEstreno': request.data.get('fechaEstreno', pelicula_obj.fechaEstreno),
             'pais': request.data.get('pais', pelicula_obj.pais),
             'imagen_url': request.data.get('imagen_url', pelicula_obj.imagen_url)
-            }
+        }
         serializador = pelicula_serializer(pelicula_obj, data=data, partial=True)
         if serializador.is_valid():
             serializador.save()
